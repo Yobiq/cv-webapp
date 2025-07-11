@@ -1,6 +1,6 @@
 <!-- Education Section-->
 <section class="container">
-    <h2 class="text-secondary fw-bolder mb-4">Education</h2>
+    <h2 class="text-primary fw-bolder mb-4">Opleiding</h2>
     <!-- Education Card 1-->
 
     <div id="allEducationInsider1">
