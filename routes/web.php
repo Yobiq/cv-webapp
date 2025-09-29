@@ -10,20 +10,16 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Session;
-//Route::get('/', function(){
-//   return "<h1> Server connect successfully done!</h1>";
-//};
 
-//Page routes
-Route::get('/', [HomeController::class, 'page']);
-Route::get('/about', [HomeController::class, 'aboutPage']);
-Route::get('/projects', [ProjectController::class, 'page']);
-Route::get('/resume', [ResumeController::class, 'page']);
-Route::get('/contact', [ContactController::class, 'page']);
+//Page routes - MET NAMED ROUTES voor Hostinger
+Route::get('/', [HomeController::class, 'page'])->name('home');
+Route::get('/about', [HomeController::class, 'aboutPage'])->name('about');
+Route::get('/projects', [ProjectController::class, 'page'])->name('projects');
+Route::get('/resume', [ResumeController::class, 'page'])->name('resume');
+Route::get('/contact', [ContactController::class, 'page'])->name('contact');
 Route::get('/services', function () {
     return view('pages.services');
-});
-
+})->name('services');
 
 // Admin auth routes - zorg dat deze routes altijd toegankelijk zijn
 Route::get('/admin', [AuthController::class, 'showAdminLogin'])->name('admin.login');
@@ -99,4 +95,3 @@ Route::post('/lang-switch', function() {
     }
     return back();
 })->name('lang.switch');
-

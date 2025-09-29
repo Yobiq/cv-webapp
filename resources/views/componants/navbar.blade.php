@@ -1,13 +1,13 @@
 <!-- Navigation Ultra Modern -->
 <div class="navbar-brand-left position-absolute top-0 start-0 ps-5 pt-4" style="z-index:10;">
-    <a href="{{url('/')}}" class="brand-logo-link">
+    <a href="{{ route('home') }}" class="brand-logo-link">
         <span class="brand-logo fw-bold text-uppercase">MC.</span>
     </a>
 </div>
 <nav class="navbar navbar-expand-lg custom-navbar shadow-lg py-3 justify-content-center">
     <div class="container px-4 justify-content-center">
         <!-- Mobile Brand Logo (hidden on desktop) -->
-        <a href="{{url('/')}}" class="navbar-brand d-lg-none mobile-brand-logo">
+        <a href="{{ route('home') }}" class="navbar-brand d-lg-none mobile-brand-logo">
             <span class="brand-logo fw-bold text-uppercase">MC.</span>
         </a>
         
@@ -39,12 +39,12 @@
         <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
             <!-- Desktop Menu -->
             <ul class="navbar-nav mb-2 mb-lg-0 gap-2 align-items-center d-none d-lg-flex">
-                <li class="nav-item"><a class="nav-link nav-link-modern px-4 py-2" href="{{url('/')}}">{{ __('messages.home') }}</a></li>
-                <li class="nav-item"><a class="nav-link nav-link-modern px-4 py-2" href="{{url('/about')}}">{{ __('messages.about') }}</a></li>
-                <li class="nav-item"><a class="nav-link nav-link-modern px-4 py-2" href="{{url('/resume')}}">{{ __('messages.cv') }}</a></li>
-                <li class="nav-item"><a class="nav-link nav-link-modern px-4 py-2" href="{{url('/services')}}">{{ __('messages.services') }}</a></li>
-                <li class="nav-item"><a class="nav-link nav-link-modern px-4 py-2" href="{{url('/projects')}}">{{ __('messages.projects') }}</a></li>
-                <li class="nav-item"><a class="nav-link nav-link-modern px-4 py-2" href="{{url('/contact')}}">{{ __('messages.contact') }}</a></li>
+                <li class="nav-item"><a class="nav-link nav-link-modern px-4 py-2" href="{{ route('home') }}">{{ __('messages.home') }}</a></li>
+                <li class="nav-item"><a class="nav-link nav-link-modern px-4 py-2" href="{{ route('about') }}">{{ __('messages.about') }}</a></li>
+                <li class="nav-item"><a class="nav-link nav-link-modern px-4 py-2" href="{{ route('resume') }}">{{ __('messages.cv') }}</a></li>
+                <li class="nav-item"><a class="nav-link nav-link-modern px-4 py-2" href="{{ route('services') }}">{{ __('messages.services') }}</a></li>
+                <li class="nav-item"><a class="nav-link nav-link-modern px-4 py-2" href="{{ route('projects') }}">{{ __('messages.projects') }}</a></li>
+                <li class="nav-item"><a class="nav-link nav-link-modern px-4 py-2" href="{{ route('contact') }}">{{ __('messages.contact') }}</a></li>
                 
                 <!-- Desktop Controls -->
                 <li class="nav-item">
@@ -76,42 +76,42 @@
                     </div>
                     <ul class="mobile-menu-list">
                         <li class="mobile-menu-item">
-                            <a href="{{url('/')}}" class="mobile-menu-link">
+                            <a href="{{ route('home') }}" class="mobile-menu-link">
                                 <i class="bi bi-house-door mobile-menu-icon"></i>
                                 <span class="mobile-menu-text">{{ __('messages.home') }}</span>
                                 <i class="bi bi-arrow-right mobile-menu-arrow"></i>
                             </a>
                         </li>
                         <li class="mobile-menu-item">
-                            <a href="{{url('/about')}}" class="mobile-menu-link">
+                            <a href="{{ route('about') }}" class="mobile-menu-link">
                                 <i class="bi bi-person mobile-menu-icon"></i>
                                 <span class="mobile-menu-text">{{ __('messages.about') }}</span>
                                 <i class="bi bi-arrow-right mobile-menu-arrow"></i>
                             </a>
                         </li>
                         <li class="mobile-menu-item">
-                            <a href="{{url('/resume')}}" class="mobile-menu-link">
+                            <a href="{{ route('resume') }}" class="mobile-menu-link">
                                 <i class="bi bi-file-earmark-person mobile-menu-icon"></i>
                                 <span class="mobile-menu-text">{{ __('messages.cv') }}</span>
                                 <i class="bi bi-arrow-right mobile-menu-arrow"></i>
                             </a>
                         </li>
                         <li class="mobile-menu-item">
-                            <a href="{{url('/services')}}" class="mobile-menu-link">
+                            <a href="{{ route('services') }}" class="mobile-menu-link">
                                 <i class="bi bi-gear mobile-menu-icon"></i>
                                 <span class="mobile-menu-text">{{ __('messages.services') }}</span>
                                 <i class="bi bi-arrow-right mobile-menu-arrow"></i>
                             </a>
                         </li>
                         <li class="mobile-menu-item">
-                            <a href="{{url('/projects')}}" class="mobile-menu-link">
+                            <a href="{{ route('projects') }}" class="mobile-menu-link">
                                 <i class="bi bi-folder2-open mobile-menu-icon"></i>
                                 <span class="mobile-menu-text">{{ __('messages.projects') }}</span>
                                 <i class="bi bi-arrow-right mobile-menu-arrow"></i>
                             </a>
                         </li>
                         <li class="mobile-menu-item">
-                            <a href="{{url('/contact')}}" class="mobile-menu-link">
+                            <a href="{{ route('contact') }}" class="mobile-menu-link">
                                 <i class="bi bi-envelope mobile-menu-icon"></i>
                                 <span class="mobile-menu-text">{{ __('messages.contact') }}</span>
                                 <i class="bi bi-arrow-right mobile-menu-arrow"></i>
