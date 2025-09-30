@@ -786,6 +786,7 @@ body:not(.darkmode) .tool-icon {
   height: 32px;
   object-fit: contain;
   transition: inherit;
+  display: block;
 }
 
 /* Tooltip styling */
@@ -895,13 +896,16 @@ body:not(.darkmode) .tool-icon::after {
   }
   
   .tools-bar {
-    gap: 20px;
+    gap: 12px;
+    flex-wrap: nowrap;           /* één rij */
+    justify-content: center;     /* centreren, geen scroll */
   }
   
   .tool-icon {
-    width: 50px;
-    height: 50px;
-    font-size: 1.3rem;
+    width: 40px;                 /* kleiner zodat alles past */
+    height: 40px;
+    font-size: 1.1rem;
+    flex: 0 1 auto;              /* laat indien nodig licht krimpen */
   }
 }
 
@@ -935,13 +939,16 @@ body:not(.darkmode) .tool-icon::after {
   }
   
   .tools-bar {
-    gap: 15px;
+    gap: 8px;                    /* nog compacter op zeer klein scherm */
+    flex-wrap: nowrap;
+    justify-content: center;
   }
   
   .tool-icon {
-    width: 45px;
-    height: 45px;
-    font-size: 1.2rem;
+    width: 34px;
+    height: 34px;
+    font-size: 1rem;
+    flex: 0 1 auto;
   }
   
   .spinning-icon-img {
