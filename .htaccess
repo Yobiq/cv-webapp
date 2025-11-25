@@ -1,0 +1,12 @@
+RewriteEngine On
+
+# Redirect non-www naar www
+RewriteCond %{HTTP_HOST} ^musabecoucou\.nl [NC]
+RewriteRule ^(.*)$ https://www.musabecoucou.nl/$1 [L,R=301]
+
+# Je bestaande regels hieronder
+RewriteCond %{REQUEST_URI} !^/public/
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ /public/$1
+RewriteRule ^(/)?$ public/index.php [L]
