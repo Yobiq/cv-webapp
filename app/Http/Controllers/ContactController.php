@@ -1,27 +1,19 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use App\Services\CvContentService;
+use Illuminate\Contracts\View\View;
 
-class ContactController extends Controller
+final class ContactController extends Controller
 {
-    function page(Request $request){
-        return view('pages.contact');
-    }
-
-    function postAContact(Request $request){
-        $formData = $request->input();
-
-        $affected = DB::table('contacts')
-            ->insert($formData);
-
-        return response()->json(['msg' => 'Form submited successfully!'], 200);
-    }
-
-    function getAllContacts(Request $request){
-        $allContacts = DB::table('contacts')->get();
-        return $allContacts;
+    public function page(CvContentService $cvContentService): View
+    {
+        return view('pages.contact', [
+            'contact' => $cvContentService->contact(),
+            'socials' => $cvContentService->socials(),
+        ]);
     }
 }

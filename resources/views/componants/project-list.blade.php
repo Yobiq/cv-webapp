@@ -1,3 +1,7 @@
+@php
+    $projectItems = $projects ?? [];
+@endphp
+
 <!-- Modern Projects Section -->
 <section class="modern-projects-section">
     <div class="projects-container">
@@ -20,35 +24,47 @@
         </div>
 
         <!-- Projects Grid -->
-        <div class="projects-grid" id="project-cards-container">
-            <!-- Project Cards will be loaded here -->
+        <div class="projects-grid">
+            @forelse($projectItems as $project)
+                <div class="project-card">
+                    <div class="project-image-container">
+                        @if(!empty($project['thumbnail']))
+                            <img src="{{ asset($project['thumbnail']) }}" alt="{{ $project['title'] ?? 'Project thumbnail' }}" class="project-image">
+                        @else
+                            <div class="project-image-placeholder">{{ __('messages.no_image') }}</div>
+                        @endif
+
+                        @if(!empty($project['preview_link']))
+                            <a class="project-link-btn" href="{{ $project['preview_link'] }}" target="_blank" rel="noopener">
+                                <i class="bi bi-box-arrow-up-right"></i>
+                            </a>
+                        @endif
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">{{ $project['title'] ?? '' }}</h3>
+                        <div class="project-tech">
+                            @php $tech = $project['technologies'] ?? []; @endphp
+                            @foreach(array_slice($tech, 0, 4) as $label)
+                                <span class="tech-badge">{{ $label }}</span>
+                            @endforeach
+                            @if(count($tech) > 4)
+                                <span class="tech-badge more-badge">+{{ count($tech) - 4 }}</span>
+                            @endif
+                        </div>
+                        <p class="project-description">{{ $project['summary'] ?? '' }}</p>
+                        @if(!empty($project['preview_link']))
+                            <a class="view-details-btn" href="{{ $project['preview_link'] }}" target="_blank" rel="noopener">
+                                {{ __('messages.view_project') }}
+                            </a>
+                        @endif
+                    </div>
+                </div>
+            @empty
+                <p class="text-center text-muted w-100">{{ __('messages.no_projects_found') }}</p>
+            @endforelse
         </div>
     </div>
 </section>
-
-<!-- Project Detail Modal -->
-<div class="modal fade" id="projectDetailModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered">
-        <div class="modal-content border-0 shadow">
-            <div class="modal-header border-0">
-                <h5 class="modal-title fw-bolder" id="modal-project-title"></h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-md-6 mb-4 mb-md-0">
-                        <div id="modal-project-image" class="rounded-3 overflow-hidden"></div>
-                    </div>
-                    <div class="col-md-6">
-                        <div id="modal-project-languages" class="mb-3"></div>
-                        <div id="modal-project-description" class="mb-4"></div>
-                        <div id="modal-project-link"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
 <style>
 /* Modern Projects Section */
@@ -257,16 +273,6 @@ body:not(.darkmode) .project-card {
     flex-direction: column;
 }
 
-/* Placeholder cards */
-.project-card.placeholder {
-    opacity: 0.85;
-    cursor: default;
-}
-.project-card.placeholder .view-details-btn {
-    opacity: 0.6;
-    cursor: not-allowed;
-}
-
 .project-title {
     font-size: 1.18rem;
     font-weight: 700;
@@ -275,7 +281,6 @@ body:not(.darkmode) .project-card {
     line-height: 1.3;
 }
 
-/* Light mode title */
 body:not(.darkmode) .project-title {
     color: #212529;
 }
@@ -312,7 +317,6 @@ body:not(.darkmode) .project-title {
     flex: 1;
 }
 
-/* Light mode description */
 body:not(.darkmode) .project-description {
     color: #6c757d;
 }
@@ -327,43 +331,44 @@ body:not(.darkmode) .project-description {
     font-weight: 600;
     transition: all 0.3s ease;
     align-self: flex-start;
+    text-decoration: none;
 }
 
 .view-details-btn:hover {
     transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+    color: #fff;
 }
 
-/* Responsive Design */
 @media (max-width: 600px) {
     .projects-grid {
         grid-template-columns: 1fr;
         gap: 24px;
     }
-    
+
     .header-content {
         flex-direction: column;
         text-align: center;
         gap: 12px;
         padding: 16px 20px;
     }
-    
+
     .header-title {
         font-size: 1.6rem;
     }
-    
+
     .projects-container {
         padding: 0 15px;
     }
-    
+
     .project-content {
         padding: 20px 18px 16px 18px;
     }
-    
+
     .project-title {
         font-size: 1.1rem;
     }
-    
+
     .project-description {
         font-size: 0.95rem;
     }
@@ -373,290 +378,13 @@ body:not(.darkmode) .project-description {
     .project-content {
         padding: 18px 16px 14px 16px;
     }
-    
+
     .project-title {
         font-size: 1rem;
     }
-    
+
     .project-description {
         font-size: 0.9rem;
     }
 }
 </style>
-
-<script>
-    // Globale variabele om projectgegevens op te slaan
-    let projectsData = [];
-    
-    // Bootstrap modal object
-    let projectModal;
-    
-    const callAllPostApi = async () => {
-        document.getElementById('loading-div').classList.remove('d-none');
-        try {
-            const response = await axios.get('/getAllProjectDetails');
-            document.getElementById('loading-div').classList.add('d-none');
-
-            if (response.status === 200) {
-                projectsData = response.data; // Sla projecten op in globale variabele
-
-                // Voeg 3 extra projecten toe zodat ze exact als de rest renderen
-                const extraProjects = [
-                    {
-                        title: 'OnTourly',
-                        details: 'Platform voor tour- & eventmanagement: bookings, contracts, logistics.',
-                        thumbLink: `{{ asset('assets/ontourly.png') }}`,
-                        previewLink: 'https://ontourly.com',
-                        languages: [
-                            { name: 'Laravel', color_code: '#6610f2', icon: '' },
-                            { name: 'PHP', color_code: '#777bb3', icon: '' },
-                            { name: 'HTML', color_code: '#e34f26', icon: '' },
-                            { name: 'JavaScript', color_code: '#f59e0b', icon: '' },
-                            { name: 'SQL', color_code: '#00758f', icon: '' },
-                            { name: 'CSS', color_code: '#264de4', icon: '' }
-                        ]
-                    },
-                    {
-                        title: 'Partijzorg',
-                        details: 'Specialist in thuiszorg, werving en selectie van zorgpersoneel.',
-                        thumbLink: `{{ asset('assets/partijzorg.png') }}`,
-                        previewLink: 'https://partijzorg.nl',
-                        languages: [
-                            { name: 'PHP', color_code: '#0d6efd', icon: '' },
-                            { name: 'Laravel', color_code: '#6610f2', icon: '' },
-                            { name: 'JavaScript', color_code: '#f59e0b', icon: '' },
-                        ]
-                    },
-                    {
-                        title: 'IA Ticket',
-                        details: 'Vind de beste events. Gratis registratie, gegarandeerde entree.',
-                        thumbLink: `{{ asset('assets/iaticket.png') }}`,
-                        previewLink: 'https://iaticket.com',
-                        languages: [
-                            { name: 'PHP', color_code: '#0d6efd', icon: '' },
-                            { name: 'Laravel', color_code: '#6610f2', icon: '' },
-                            { name: 'JavaScript', color_code: '#f59e0b', icon: '' },
-                        ]
-                    }
-                ];
-                projectsData = [...projectsData, ...extraProjects];
-
-                // Forceer badges: deze projecten zijn gebouwd met WordPress
-                const wordpressTitles = ['house of lush', 'despit hold', 'nieuwspitholt', 'romys touch', 'partijzorg'];
-                projectsData = projectsData.map(p => {
-                    const titleLc = (p.title || '').toLowerCase();
-                    if (wordpressTitles.includes(titleLc)) {
-                        p.languages = [
-                            { name: 'WordPress', color_code: '#21759b', icon: '' }
-                        ];
-                    } else if (titleLc === 'oliviwilson') {
-                        p.languages = [
-                            { name: 'Shopify', color_code: '#95BF47', icon: '' }
-                        ];
-                    }
-                    return p;
-                });
-
-                // Sorteer projecten: eerst platform (WordPress -> Shopify -> overige), daarna titel
-                const platformRank = (p) => {
-                    const langs = Array.isArray(p.languages) ? p.languages : [];
-                    const names = langs.map(l => (l.name || '').toLowerCase());
-                    if (names.includes('wordpress')) return 0;
-                    if (names.includes('shopify')) return 1;
-                    return 2;
-                };
-                projectsData.sort((a, b) => {
-                    const ra = platformRank(a);
-                    const rb = platformRank(b);
-                    if (ra !== rb) return ra - rb;
-                    const ta = (a.title || '').toLowerCase();
-                    const tb = (b.title || '').toLowerCase();
-                    return ta.localeCompare(tb);
-                });
-                const projectsContainer = document.getElementById('project-cards-container');
-                projectsContainer.innerHTML = ''; // Clear existing content
-                
-                if (projectsData.length === 0) {
-                    projectsContainer.innerHTML = `
-                        <div class="col-12">
-                            <div class="alert alert-info text-center">
-                                <i class="bi bi-info-circle me-2"></i>{{ __('messages.no_projects_found') }}
-                            </div>
-                        </div>
-                    `;
-                    return;
-                }
-                
-                // Maak moderne project kaartjes
-                projectsData.forEach((project, index) => {
-                    // Genereer HTML voor programmeertalen badges
-                    let languagesHTML = '';
-                    if (project.languages && project.languages.length > 0) {
-                        project.languages.slice(0, 3).forEach(lang => {
-                            const bgColor = lang.color_code || '#6c757d';
-                            const icon = lang.icon ? `<i class="${lang.icon} me-1"></i>` : '';
-                            languagesHTML += `
-                                <span class="tech-badge" style="background-color: ${bgColor}; color: #ffffff; border: none;">
-                                    ${icon}${lang.name}
-                                </span>
-                            `;
-                        });
-                        
-                        // Toon een '+X meer' badge als er meer dan 3 talen zijn
-                        if (project.languages.length > 3) {
-                            languagesHTML += `
-                                <span class="tech-badge more-badge">
-                                    +${project.languages.length - 3} {{ __('messages.more') }}
-                                </span>
-                            `;
-                        }
-                    }
-                    
-                    // Genereer HTML voor project thumbnail
-                    let thumbnailHTML = '';
-                    if (project.thumbLink && project.thumbLink.trim() !== '') {
-                        const imgSrc = project.thumbLink.startsWith('http') ? 
-                            project.thumbLink : 
-                            `{{ asset('') }}${project.thumbLink}`;
-                        thumbnailHTML = `<img class="project-image" src="${imgSrc}" alt="${project.title}">`;
-                    } else {
-                        thumbnailHTML = `
-                            <div class="project-image-placeholder">
-                                <span class="placeholder-text">{{ __('messages.no_image') }}</span>
-                            </div>
-                        `;
-                    }
-                    
-                    // Voeg het project toe aan de container
-                    const projectCard = `
-                        <div class="project-card" data-project-index="${index}">
-                            <div class="project-image-container">
-                                ${thumbnailHTML}
-                                ${project.previewLink ? `
-                                    <a href="${project.previewLink}" target="_blank" class="project-link-btn" title="Bekijk live project">
-                                        <i class="bi bi-link-45deg"></i>
-                                    </a>
-                                ` : ''}
-                            </div>
-                            <div class="project-content">
-                                <h3 class="project-title">${project.title}</h3>
-                                <div class="project-tech">
-                                    ${languagesHTML}
-                                </div>
-                                <p class="project-description">${project.details.substring(0, 120)}${project.details.length > 120 ? '...' : ''}</p>
-                                <button class="view-details-btn">
-                                    <i class="bi bi-eye me-1"></i>{{ __('messages.view_details') }}
-                                </button>
-                            </div>
-                        </div>
-                    `;
-                    
-                    projectsContainer.innerHTML += projectCard;
-                });
-                
-                // Voeg event listeners toe aan de kaartjes
-                document.querySelectorAll('.project-card').forEach(card => {
-                    card.addEventListener('click', function(e) {
-                        // Voorkom dat de klik doorgaat als op de link is geklikt
-                        if (e.target.closest('a[target="_blank"]')) {
-                            return;
-                        }
-                        
-                        const projectIndex = this.getAttribute('data-project-index');
-                        showProjectDetails(projectIndex);
-                    });
-                });
-                
-                // Voeg event listeners toe aan de detail knoppen
-                document.querySelectorAll('.view-details-btn').forEach(btn => {
-                    btn.addEventListener('click', function(e) {
-                        e.stopPropagation(); // Voorkom dat de klik doorgaat naar de kaart
-                        const projectIndex = this.closest('.project-card').getAttribute('data-project-index');
-                        showProjectDetails(projectIndex);
-                    });
-                });
-
-                // Geen aparte statische rendering: extra projecten zijn mee-gerenderd in dezelfde loop
-            }
-        } catch (error) {
-            console.error('Error fetching projects:', error);
-            document.getElementById('loading-div').classList.add('d-none');
-            document.getElementById('project-cards-container').innerHTML = `
-                <div class="col-12">
-                    <div class="alert alert-danger">
-                        <i class="bi bi-exclamation-triangle me-2"></i>{{ __('messages.error_loading_projects') }}
-                    </div>
-                </div>
-            `;
-        }
-    };
-    
-    // Functie om projectdetails te tonen in de modal
-    function showProjectDetails(index) {
-        const project = projectsData[index];
-        if (!project) return;
-        
-        // Vul de modal met projectgegevens
-        document.getElementById('modal-project-title').textContent = project.title;
-        
-        // Afbeelding
-        const imageContainer = document.getElementById('modal-project-image');
-        if (project.thumbLink && project.thumbLink.trim() !== '') {
-            const imgSrc = project.thumbLink.startsWith('http') ?
-                project.thumbLink :
-                `{{ asset('') }}${project.thumbLink}`; // Zelfde resolver als kaartjes
-            imageContainer.innerHTML = `<img src="${imgSrc}" alt="${project.title}" class="img-fluid rounded-3">`;
-        } else {
-            imageContainer.innerHTML = `
-                <div class="bg-light rounded-3 d-flex align-items-center justify-content-center" style="height: 250px;">
-                    <span class="text-muted">{{ __('messages.no_image') }}</span>
-                </div>
-            `;
-        }
-        
-        // Programmeertalen
-        const languagesContainer = document.getElementById('modal-project-languages');
-        if (project.languages && project.languages.length > 0) {
-            let languagesHTML = '';
-            project.languages.forEach(lang => {
-                const bgColor = lang.color_code || '#6c757d';
-                const icon = lang.icon ? `<i class="${lang.icon} me-1"></i>` : '';
-                languagesHTML += `
-                    <span class="badge me-1 mb-1" style="background-color: ${bgColor}; color: #ffffff; border: none; font-size: 0.85rem; padding: 0.35em 0.65em;">
-                        ${icon}${lang.name}
-                    </span>
-                `;
-            });
-            languagesContainer.innerHTML = languagesHTML;
-        } else {
-            languagesContainer.innerHTML = '';
-        }
-        
-        // Beschrijving
-        document.getElementById('modal-project-description').innerHTML = `<p>${project.details}</p>`;
-        
-        // Link
-        const linkContainer = document.getElementById('modal-project-link');
-        if (project.previewLink && project.previewLink.trim() !== '') {
-            linkContainer.innerHTML = `
-                <a href="${project.previewLink}" target="_blank" class="btn btn-primary">
-                    <i class="bi bi-link-45deg me-1"></i>{{ __('messages.view_project') }}
-                </a>
-            `;
-        } else {
-            linkContainer.innerHTML = '';
-        }
-        
-        // Toon de modal
-        projectModal.show();
-    }
-    
-    // Initialiseer de pagina wanneer deze is geladen
-    document.addEventListener('DOMContentLoaded', function() {
-        // Initialiseer de Bootstrap modal
-        projectModal = new bootstrap.Modal(document.getElementById('projectDetailModal'));
-        
-        // Laad de projecten
-        callAllPostApi();
-    });
-</script>

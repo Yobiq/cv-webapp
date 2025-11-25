@@ -1,27 +1,109 @@
 @extends('app')
+
 @section('content')
     <div class="container py-5">
         <div class="resume-header text-center mb-5">
             <h1 class="display-4 fw-bold mb-3">{{ __('messages.cv') }}</h1>
-            @include('componants.experience')
-         </div>
+            <div class="resume-download-section mt-5">
+                @php
+                    $resumeData = $resumeMeta ?? [];
+                    $downloadPath = $resumeData['download_path'] ?? null;
+                    $downloadLabel = $resumeData['download_label'] ?? __('messages.download_cv');
+                @endphp
+                @if($downloadPath)
+                    <div class="resume-buttons d-flex gap-3 justify-content-center flex-wrap">
+                        <a class="btn btn-preview-cv px-5 py-3" href="{{ asset($downloadPath) }}" target="_blank" rel="noopener">
+                            <i class="bi bi-eye me-2"></i>
+                            Preview CV
+                        </a>
+                        <a class="btn btn-download-cv px-5 py-3" href="{{ asset($downloadPath) }}" download>
+                            <i class="bi bi-download me-2"></i>
+                            {{ $downloadLabel }}
+                        </a>
+                    </div>
+                @else
+                    <p class="text-muted">{{ __('messages.no_cv_available') }}</p>
+                @endif
+            </div>
+        </div>
+    </div>
 @endsection
 
 <style>
     .resume-header {
         position: relative;
+        min-height: 60vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
     
-    .resume-subtitle {
+    .resume-download-section {
+        margin-top: 3rem;
+    }
+    
+    .resume-buttons {
+        gap: 1.5rem;
+    }
+    
+    .btn-preview-cv,
+    .btn-download-cv {
+        border-radius: 16px;
+        font-weight: 600;
         font-size: 1.2rem;
-        letter-spacing: 0.5px;
+        padding: 1.25rem 3rem;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        border: 2px solid transparent;
     }
     
-    .resume-divider {
-        height: 4px;
-        width: 80px;
-        background: linear-gradient(90deg, var(--color-primary), var(--color-primary-alt));
-        border-radius: 2px;
+    .btn-preview-cv {
+        background: var(--color-card-bg);
+        color: var(--color-text);
+        border-color: rgba(var(--color-primary-rgb, 95, 46, 234), 0.3);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    }
+    
+    .btn-preview-cv:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 24px rgba(var(--color-primary-rgb, 95, 46, 234), 0.2);
+        border-color: var(--color-primary);
+        background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-alt) 100%);
+        color: #fff;
+    }
+    
+    .btn-download-cv {
+        background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-alt) 100%);
+        color: #fff;
+        box-shadow: 0 4px 16px rgba(var(--color-primary-rgb, 95, 46, 234), 0.2);
+    }
+    
+    .btn-download-cv:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 24px rgba(var(--color-primary-rgb, 95, 46, 234), 0.3);
+        color: #fff;
+    }
+    
+    .btn-preview-cv:active,
+    .btn-download-cv:active {
+        transform: translateY(-1px);
+    }
+    
+    @media (max-width: 576px) {
+        .resume-buttons {
+            flex-direction: column;
+            width: 100%;
+            max-width: 300px;
+        }
+        
+        .btn-preview-cv,
+        .btn-download-cv {
+            width: 100%;
+            justify-content: center;
+        }
     }
     
     /* Animaties voor page load */

@@ -1,3 +1,7 @@
+@php
+    $heroData = $hero ?? [];
+@endphp
+
 <!-- Header-->
 <header class="py-5">
     <div class="container px-5 pb-5">
@@ -5,9 +9,13 @@
             <div class="col-xxl-5">
                 <!-- Header text content-->
                 <div class="text-center text-xxl-start">
-                    <div class="badge bg-gradient-primary-to-secondary text-white mb-4"><div class="text-uppercase" id="keyLine">{{ __('messages.design_dev_marketing') }}</div></div>
-                    <div class="fs-3 fw-light text-muted" id="title">{{ __('messages.welcome_portfolio') }}</div>
-                    <h1 class="display-3 fw-bolder mb-5"><span class="text-gradient d-inline" id="short_title">Musabe Coucou</span></h1>
+                    <div class="badge bg-gradient-primary-to-secondary text-white mb-4">
+                        <div class="text-uppercase">{{ $heroData['key_line'] ?? __('messages.design_dev_marketing') }}</div>
+                    </div>
+                    <div class="fs-3 fw-light text-muted">{{ $heroData['title'] ?? __('messages.welcome_portfolio') }}</div>
+                    <h1 class="display-3 fw-bolder mb-5">
+                        <span class="text-gradient d-inline">{{ $heroData['short_title'] ?? 'Musabe Coucou' }}</span>
+                    </h1>
                     <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xxl-start mb-3 hero-buttons">
                         <a class="btn hero-btn hero-btn-primary" href="{{url('/resume')}}">
                             <i class="bi bi-file-earmark-person me-2"></i>
@@ -55,27 +63,13 @@
             <div class="col-xxl-7">
                 <div class="d-flex justify-content-center mt-5 mt-xxl-0">
                     <div class="profile">
-                        <img class="profile-img" id="imgProfile" src="{{asset('assets/linkedin.png')}}" alt="..." />
+                        <img class="profile-img" src="{{ asset($heroData['image'] ?? 'assets/linkedin.png') }}" alt="Musabe Coucou" />
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </header>
-
-<script>
-    const getHeroProperties = async () =>{
-        const allProperties = await axios.get('getHeroproperties');
-        if(allProperties.status === 200){
-            document.getElementById('keyLine').innerText = allProperties.data[0].keyLine;
-            document.getElementById('short_title').innerText = allProperties.data[0].short_title;
-            document.getElementById('title').innerText = allProperties.data[0].title;
-            document.getElementById('imgProfile').setAttribute('src', allProperties.data[0].img);
-        }
-    }
-
-    getHeroProperties();
-</script>
 
 <style>
 /* Hero Buttons Styling */

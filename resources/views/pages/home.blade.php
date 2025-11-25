@@ -1,4 +1,5 @@
 @extends('app')
+
 @section('content')
-    @include('componants.hero')
+    @include('componants.hero', ['hero' => $hero ?? []])
 @endsection

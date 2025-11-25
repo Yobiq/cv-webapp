@@ -8,11 +8,11 @@
                     <path d="M23.6004 9.5927l-.0337-.0862L20.3.9814a.851.851 0 00-.3362-.405.8748.8748 0 00-.9997.0539.8748.8748 0 00-.29.4399l-2.2055 6.748H7.5375l-2.2057-6.748a.8573.8573 0 00-.29-.4412.8748.8748 0 00-.9997-.0537.8585.8585 0 00-.3362.4049L.4332 9.5015l-.0325.0862a6.0657 6.0657 0 002.0119 7.0105l.0113.0087.03.0213 4.976 3.7264 2.462 1.8633 1.4995 1.1321a1.0085 1.0085 0 001.2197 0l1.4995-1.1321 2.4619-1.8633 5.006-3.7466.0125-.01a6.0682 6.0682 0 002.0094-7.003z"/>
                 </svg>
             </a>
-            <a href="mailto:musabe.coucou@outlook.com" class="footer-icon mx-3" aria-label="E-mail"><i class="bi bi-envelope"></i></a>
+            <a href="mailto:Eyobielgoitom10@gmail.com" class="footer-icon mx-3" aria-label="E-mail"><i class="bi bi-envelope"></i></a>
         </div>
         <div class="footer-divider mx-auto mb-4"></div>
         <div class="footer-copyright small">
-            &copy; {{ date('Y') }} <span class="fw-bold">Musabe Coucou</span> &mdash; All rights reserved.
+            &copy; {{ date('Y') }} <span class="fw-bold">Eyobielk Goitom</span> &mdash; All rights reserved.
         </div>
     </div>
 </footer>
