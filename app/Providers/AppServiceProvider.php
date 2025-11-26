@@ -25,5 +25,10 @@ class AppServiceProvider extends ServiceProvider
     {
         // This application does not use a database
         // All content is stored in config/cv.php
+        
+        // Force HTTPS for asset URLs in production
+        if (config('app.env') === 'production') {
+            \URL::forceScheme('https');
+        }
     }
 }
