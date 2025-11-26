@@ -23,9 +23,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // Force array driver if no database is needed
-        if (config('database.default') !== 'array' && !env('DB_DATABASE')) {
-            config(['database.default' => 'array']);
-        }
+        // This application does not use a database
+        // All content is stored in config/cv.php
     }
 }
