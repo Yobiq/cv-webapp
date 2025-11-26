@@ -23,6 +23,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        // Force array driver if no database is needed
+        if (config('database.default') !== 'array' && !env('DB_DATABASE')) {
+            config(['database.default' => 'array']);
+        }
     }
 }
