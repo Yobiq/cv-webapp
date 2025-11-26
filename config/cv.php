@@ -3,16 +3,16 @@
 declare(strict_types=1);
 
 return [
-    'hero' => [
-        'key_line' => 'Premium Web Development & Design',
-        'title' => 'Transform Your Digital Presence',
-        'short_title' => 'Eyobielk Goitom',
-        'image' => 'yobi.png',
-    ],
+        'hero' => [
+            'key_line' => 'Premium Web Development & Design',
+            'title' => 'Transform Your Digital Presence',
+            'short_title' => 'Eyobiel Goitom',
+            'image' => 'yobi.png',
+        ],
 
-    'about' => [
-        'name' => 'Eyobielk Goitom',
-        'role' => 'Founder · EG Web Solutions',
+        'about' => [
+            'name' => 'Eyobiel Goitom',
+            'role' => 'Founder · EG Web Solutions',
         'title' => 'Ik help merken groeien met elegante én functionele digitale ervaringen.',
         'descriptions' => [
             'Ik leid EG Web Solutions, een studio die premium web development, UI/UX design en e-commerce oplossingen levert voor ambitieuze bedrijven.',
@@ -32,49 +32,56 @@ return [
         ],
         [
             'title' => 'OnTourly Mobile (Expo)',
-            'preview_link' => null,
+            'preview_link' => 'https://apps.apple.com/nl/app/ontourly/id6752312663?l=en-GB',
             'thumbnail' => null,
-            'summary' => 'Expo/React Native app bovenop dezelfde API-suite voor on-the-road agenda’s, contract approvals en push-notificaties.',
-            'technologies' => ['Expo', 'React Native', 'REST APIs', 'Firebase Cloud Messaging'],
+            'summary' => 'Expo/React Native app bovenop dezelfde API-suite voor on-the-road agenda’s, contract approvals, push-notificaties en iOS-distributie via de App Store.',
+            'technologies' => ['Expo', 'React Native', 'REST APIs', 'Firebase Cloud Messaging', 'Apple App Store'],
         ],
         [
             'title' => 'Moso Basmara',
-            'preview_link' => null,
+            'preview_link' => 'https://www.mosobasmara.com/',
             'thumbnail' => null,
             'summary' => 'Restaurantwebsite met digitaal menu, reserveringen en event booking die de Moso Basmara beleving vastlegt.',
             'technologies' => ['Next.js', 'Supabase', 'EmailJS', 'Tailwind CSS', 'TypeScript'],
         ],
         [
             'title' => 'Savanna Eetcafe',
-            'preview_link' => null,
+            'preview_link' => 'https://www.savannaeetcafe.nl/',
             'thumbnail' => null,
             'summary' => 'Cafésite met menu showcase, galerij en snelle contactflows voor een moderne hospitality experience.',
             'technologies' => ['Next.js', 'Supabase', 'EmailJS', 'Tailwind CSS'],
         ],
         [
             'title' => 'Axum Restaurant',
-            'preview_link' => null,
+            'preview_link' => 'https://www.aksumrestaurant.nl/',
             'thumbnail' => null,
             'summary' => 'Elegant Ethiopisch restaurantplatform met heritage storytelling, online reserveringen en digitale menu’s.',
             'technologies' => ['Next.js', 'Supabase', 'EmailJS', 'Tailwind CSS', 'TypeScript'],
         ],
         [
+            'title' => 'Massawa Restaurant',
+            'preview_link' => 'https://www.massawa-habesha.nl/',
+            'thumbnail' => null,
+            'summary' => 'Restaurantwebsite voor Massawa met focus op authentieke Eritrese en Ethiopische fine dining beleving.',
+            'technologies' => ['Next.js', 'Supabase', 'EmailJS', 'Tailwind CSS', 'TypeScript'],
+        ],
+        [
             'title' => 'Habesha Dating Site',
-            'preview_link' => null,
+            'preview_link' => 'https://www.egwebsolutions.nl/portfolio',
             'thumbnail' => null,
             'summary' => 'Specialized datingplatform (65% gereed) met culturele matching-algoritmen en beveiligde messaging.',
             'technologies' => ['React Native', 'Next.js', 'JavaScript', 'MongoDB', 'Firebase'],
         ],
         [
             'title' => 'Work Management System',
-            'preview_link' => null,
+            'preview_link' => 'https://www.egwebsolutions.nl/portfolio',
             'thumbnail' => null,
             'summary' => 'Business suite met taakbeheer, teamcollaboratie en analytics voor projecten en prestaties.',
             'technologies' => ['Next.js', 'React', 'Firebase', 'Supabase', 'MySQL', 'MongoDB', 'Laravel', 'Tailwind CSS'],
         ],
         [
             'title' => 'Asmera Shop',
-            'preview_link' => null,
+            'preview_link' => 'https://www.egwebsolutions.nl/portfolio',
             'thumbnail' => null,
             'summary' => 'Shopify e-commerce ervaring met custom Liquid thema’s, productbeheer en geoptimaliseerde checkout (85% gereed).',
             'technologies' => ['Shopify', 'Liquid', 'JavaScript', 'CSS', 'HTML'],
@@ -88,21 +95,21 @@ return [
         ],
         [
             'title' => 'Yohannes Hovenier B.V.',
-            'preview_link' => null,
+            'preview_link' => 'https://www.yohanneshoveniersbedrijf.nl/',
             'thumbnail' => null,
             'summary' => 'Landscaping website met serviceoverzichten, portfolio en directe contactkoppelingen.',
             'technologies' => ['React', 'Next.js', 'EmailJS'],
         ],
         [
             'title' => 'BSM Furniture',
-            'preview_link' => null,
+            'preview_link' => 'https://v0-luxurious-website-design-swart.vercel.app/',
             'thumbnail' => null,
             'summary' => 'High-end meubel e-commerce platform met 3D productvisualisatie en naadloze checkout.',
             'technologies' => ['Next.js', 'JavaScript', 'CSS'],
         ],
         [
             'title' => 'Kapsalon Stars',
-            'preview_link' => null,
+            'preview_link' => 'https://kapsalonstars.nl/',
             'thumbnail' => null,
             'summary' => 'Kapsalonwebsite met online boekingen, dienstoverzichten en responsive branding.',
             'technologies' => ['Next.js', 'JavaScript', 'Bootstrap'],

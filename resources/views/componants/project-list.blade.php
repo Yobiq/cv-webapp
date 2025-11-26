@@ -9,7 +9,7 @@
         <div class="projects-header">
             <div class="header-content">
                 <div class="header-logo">
-                    <img src="{{ asset('assets/work.png') }}" alt="MC" class="logo-img">
+                    <img src="{{ asset('assets/work.png') }}" alt="EG" class="logo-img">
                 </div>
                 <div class="header-info">
                     <h1 class="header-title">{{ __('messages.projects') }}</h1>
@@ -31,7 +31,15 @@
                         @if(!empty($project['thumbnail']))
                             <img src="{{ asset($project['thumbnail']) }}" alt="{{ $project['title'] ?? 'Project thumbnail' }}" class="project-image">
                         @else
-                            <div class="project-image-placeholder">{{ __('messages.no_image') }}</div>
+                            @php
+                                $title = $project['title'] ?? 'Project';
+                                $initials = strtoupper(mb_substr($title, 0, 2));
+                            @endphp
+                            <div class="project-image-placeholder">
+                                <div class="project-avatar">
+                                    <span class="project-avatar-initials">{{ $initials }}</span>
+                                </div>
+                            </div>
                         @endif
 
                         @if(!empty($project['preview_link']))
@@ -228,13 +236,30 @@ body:not(.darkmode) .project-card {
 .project-image-placeholder {
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    background: radial-gradient(circle at top left, #a855f7, #2563eb);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #ffffff;
-    font-size: 0.9rem;
-    font-weight: 500;
+}
+
+.project-avatar {
+    width: 88px;
+    height: 88px;
+    border-radius: 50%;
+    background: linear-gradient(145deg, rgba(15,23,42,0.95), rgba(30,64,175,0.9));
+    box-shadow: 0 12px 30px rgba(15,23,42,0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid rgba(191, 219, 254, 0.6);
+}
+
+.project-avatar-initials {
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: #e5e7eb;
+    text-transform: uppercase;
 }
 
 .project-link-btn {

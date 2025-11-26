@@ -15,6 +15,7 @@ Route::get('/about', [HomeController::class, 'aboutPage'])->name('about');
 Route::get('/projects', [ProjectController::class, 'page'])->name('projects');
 Route::get('/resume', [ResumeController::class, 'page'])->name('resume');
 Route::get('/contact', [ContactController::class, 'page'])->name('contact');
+Route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
 Route::view('/services', 'pages.services')->name('services');
 
 Route::post('/lang-switch', function () {

@@ -11,8 +11,8 @@
             <a href="mailto:Eyobielgoitom10@gmail.com" class="footer-icon mx-3" aria-label="E-mail"><i class="bi bi-envelope"></i></a>
         </div>
         <div class="footer-divider mx-auto mb-4"></div>
-        <div class="footer-copyright small">
-            &copy; {{ date('Y') }} <span class="fw-bold">Eyobielk Goitom</span> &mdash; All rights reserved.
+        <div class="footeropyright small">
+            &copy; {{ date('Y') }} <span class="fw-bold">Eyobiel Goitom · EG Web Solutions</span> &mdash; All rights reserved.
         </div>
     </div>
 </footer>

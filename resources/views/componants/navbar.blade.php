@@ -1,14 +1,14 @@
 <!-- Navigation Ultra Modern -->
 <div class="navbar-brand-left position-absolute top-0 start-0 ps-5 pt-4" style="z-index:10;">
     <a href="{{ route('home') }}" class="brand-logo-link">
-        <span class="brand-logo fw-bold text-uppercase">MC.</span>
+        <span class="brand-logo fw-bold text-uppercase">EG.</span>
     </a>
 </div>
 <nav class="navbar navbar-expand-lg custom-navbar shadow-lg py-3 justify-content-center">
     <div class="container px-4 justify-content-center">
         <!-- Mobile Brand Logo (hidden on desktop) -->
         <a href="{{ route('home') }}" class="navbar-brand d-lg-none mobile-brand-logo">
-            <span class="brand-logo fw-bold text-uppercase">MC.</span>
+            <span class="brand-logo fw-bold text-uppercase">EG.</span>
         </a>
         
         <!-- Mobile Controls (hidden on desktop) -->
