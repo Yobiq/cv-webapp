@@ -7,7 +7,8 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>Musabe Coucou</title>
-    <link rel="icon" type="image/x-icon" href="{{secure_asset('assets/favicon1.ico')}}" />
+    <link rel="icon" type="image/svg+xml" href="{{secure_asset('assets/favicon-eyobiel.svg')}}" />
+    <link rel="icon" type="image/x-icon" href="{{secure_asset('assets/favicon-eyobiel.ico')}}" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
     <link href="{{secure_asset('css/bootstrap.css')}}" rel="stylesheet" />
     <link href="{{secure_asset('css/style.css')}}" rel="stylesheet" />
