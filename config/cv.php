@@ -187,6 +187,8 @@ return [
         'download_path' => 'Eyobiel Goi.pdf',
         'download_label' => 'Download mijn CV',
         'note' => null,
+        'password' => env('CV_PASSWORD', '1234'), // Change this password in .env
+        'password_enabled' => true,
     ],
 
     'contact' => [
