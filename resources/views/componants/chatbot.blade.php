@@ -1498,7 +1498,11 @@
                     'Accept': 'application/json'
                 }
             })
-            .then(response => {
+            .then(async response => {
+                const contentType = response.headers.get('content-type');
+                const isJson = contentType && contentType.includes('application/json');
+                const data = isJson ? await response.json().catch(() => ({})) : {};
+
                 if (response.ok || response.redirected) {
                     if (submitBtn) {
                         submitBtn.innerHTML = '<i class="bi bi-check-circle"></i> Verzonden!';
@@ -1510,16 +1514,45 @@
                         chatbot.addMessage('Bedankt! Je project consultatie is verzonden. Ik neem zo snel mogelijk contact met je op! 🎉', 'bot');
                     }, 1500);
                 } else {
-                    throw new Error('Submission failed');
+                    // Handle validation errors
+                    let errorMessage = 'Er is een fout opgetreden. Probeer het later opnieuw.';
+                    
+                    if (data.errors) {
+                        const errorList = Object.values(data.errors).flat().join(', ');
+                        errorMessage = `Validatiefouten: ${errorList}`;
+                    } else if (data.message) {
+                        errorMessage = data.message;
+                    }
+                    
+                    throw new Error(errorMessage);
                 }
             })
             .catch(error => {
-                console.error('Error:', error);
+                // Log error for debugging (only in development)
+                if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+                    console.error('Error:', error);
+                }
+                
                 if (submitBtn) {
                     submitBtn.disabled = false;
                     submitBtn.innerHTML = '<i class="bi bi-send"></i> Verstuur';
+                    submitBtn.style.background = '';
                 }
-                alert('Er is een fout opgetreden. Probeer het later opnieuw of gebruik het contactformulier.');
+                
+                // Better error handling - show user-friendly message
+                const errorMsg = document.createElement('div');
+                errorMsg.className = 'wizard-error-message';
+                errorMsg.style.cssText = 'background: #fee; color: #c33; padding: 12px; border-radius: 6px; margin-top: 12px; border: 1px solid #fcc;';
+                const errorText = error.message || 'Er is een fout opgetreden. Controleer je internetverbinding en probeer het opnieuw, of gebruik het contactformulier.';
+                errorMsg.innerHTML = `<i class="bi bi-exclamation-triangle"></i> ${errorText}`;
+                
+                const wizardContent = document.querySelector('.wizard-steps');
+                const existingError = wizardContent?.querySelector('.wizard-error-message');
+                if (existingError) existingError.remove();
+                wizardContent?.appendChild(errorMsg);
+                
+                // Auto-remove error after 8 seconds
+                setTimeout(() => errorMsg.remove(), 8000);
             });
         }
     };
