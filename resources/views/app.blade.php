@@ -7,12 +7,15 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>Musabe Coucou</title>
-    <link rel="icon" type="image/svg+xml" href="{{secure_asset('assets/favicon-eyobiel.svg')}}" />
-    <link rel="icon" type="image/x-icon" href="{{secure_asset('assets/favicon-eyobiel.ico')}}" />
+    <link rel="icon" type="image/svg+xml" href="{{asset('assets/favicon-eyobiel.svg')}}" />
+    <link rel="icon" type="image/x-icon" href="{{asset('assets/favicon-eyobiel.ico')}}" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
-    <link href="{{secure_asset('css/bootstrap.css')}}" rel="stylesheet" />
-    <link href="{{secure_asset('css/style.css')}}" rel="stylesheet" />
+    <link href="{{asset('css/bootstrap.css')}}" rel="stylesheet" />
+    <link href="{{asset('css/style.css')}}" rel="stylesheet" />
     <meta name="asset-url" content="{{asset('')}}" />
+    
+    <!-- Load Bootstrap JS early so it's available for navbar scripts -->
+    <script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
     
     <style>
         :root {
@@ -79,6 +82,5 @@
 
 @include('componants.footer')
 
-<script src="{{secure_asset('js/bootstrap.bundle.min.js')}}"></script>
 </body>
 </html>

@@ -585,10 +585,18 @@ body.darkmode .hamburger-line {
             setTheme(document.body.classList.contains('darkmode') ? 'light' : 'dark');
         };
 
-        // Bootstrap tooltip initialisatie
-        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-        tooltipTriggerList.forEach(function (tooltipTriggerEl) {
-            new bootstrap.Tooltip(tooltipTriggerEl);
-        });
+        // Bootstrap tooltip initialisatie (wait for Bootstrap to be available)
+        function initBootstrapTooltips() {
+            if (typeof bootstrap !== 'undefined' && bootstrap.Tooltip) {
+                var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+                tooltipTriggerList.forEach(function (tooltipTriggerEl) {
+                    new bootstrap.Tooltip(tooltipTriggerEl);
+                });
+            } else {
+                // Retry if Bootstrap isn't loaded yet
+                setTimeout(initBootstrapTooltips, 100);
+            }
+        }
+        initBootstrapTooltips();
     });
 </script>
