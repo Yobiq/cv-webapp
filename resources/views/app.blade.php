@@ -81,6 +81,7 @@
 </div>
 
 @include('componants.footer')
+@include('componants.chatbot')
 
 </body>
 </html>
