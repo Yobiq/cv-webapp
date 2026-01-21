@@ -115,7 +115,7 @@ return [
             'technologies' => ['Shopify', 'Liquid', 'JavaScript', 'CSS', 'HTML'],
         ],
         [
-            'title' => 'Romy's Touch',
+            'title' => 'Romy\'s Touch',
             'preview_link' => 'https://www.romystouch.nl/',
             'thumbnail' => 'assets/romystouch.png',
             'summary' => 'Professional nail salon website with built-in calendar system for appointments, built with WordPress for easy management and updates. Features seamless booking integration and service showcase.',
