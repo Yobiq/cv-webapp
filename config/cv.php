@@ -24,6 +24,34 @@ return [
 
     'projects' => [
         [
+            'title' => 'E-boekhouding SaaS',
+            'preview_link' => '#',
+            'thumbnail' => null,
+            'summary' => 'SaaS platform voor elektronische boekhouding met geautomatiseerde facturering, BTW-aangifte en financiële rapportage. In ontwikkeling.',
+            'technologies' => ['Laravel', 'Next.js', 'TypeScript', 'PostgreSQL', 'Stripe', 'Tailwind CSS'],
+        ],
+        [
+            'title' => 'MARCOFIC',
+            'preview_link' => 'https://www.marcofic.nl/',
+            'thumbnail' => null,
+            'summary' => 'Professionele boekhoudingswebsite met meer dan 200 tevreden klanten. Features: online afspraakboekingen, dienstenoverzicht en moderne branding voor betrouwbare boekhoudingsdiensten.',
+            'technologies' => ['Next.js', 'React', 'TypeScript', 'Tailwind CSS'],
+        ],
+        [
+            'title' => 'Awet Clok System',
+            'preview_link' => 'https://awet-clok-system.vercel.app/',
+            'thumbnail' => null,
+            'summary' => 'Slimme urenregistratie systeem voor Massawa Restaurant met GPS-verificatie, live timer en teambeheer. Automatische locatiecontrole zorgt voor accurate shiftregistratie.',
+            'technologies' => ['Next.js', 'React', 'TypeScript', 'Vercel', 'GPS API'],
+        ],
+        [
+            'title' => 'Alpha Group Landing Page',
+            'preview_link' => 'https://v0-alpha-group-landing-page.vercel.app/',
+            'thumbnail' => null,
+            'summary' => 'Corporate landing page voor Alpha Group, een strategische holding met drie divisies: GO-TEAM (staffing), SWORD BV (technische diensten) en ALPHABouw (bouw).',
+            'technologies' => ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Vercel'],
+        ],
+        [
             'title' => 'OnTourly Platform',
             'preview_link' => 'https://ontourly.com/',
             'thumbnail' => null,
