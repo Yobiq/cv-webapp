@@ -2,6 +2,7 @@ services:
   - type: web
     name: cv-webapp
     env: docker
+    dockerfilePath: ./Dockerfile
     buildCommand: |
       composer install --no-dev --optimize-autoloader --no-interaction &&
       npm ci &&
