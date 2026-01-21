@@ -21,9 +21,9 @@ services:
       - key: APP_KEY
         value: base64:+jHgQd3rOZTsl02M8bdxbnHtBG4/nLxn4e0DOmUkxKA=
       - key: APP_URL
-        value: https://cv-webapp-40tl.onrender.com
+        value: https://cv-webapp-1.onrender.com
       - key: ASSET_URL
-        value: https://cv-webapp-40tl.onrender.com
+        value: https://cv-webapp-1.onrender.com
       - key: CV_PASSWORD
         value: 49AZrS3b
       - key: RESEND_API_KEY

@@ -22,14 +22,22 @@ RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
 # Install Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
+# Copy composer files first for better caching
+COPY composer.json composer.lock ./
+RUN composer install --no-dev --optimize-autoloader --no-interaction --no-scripts
+
+# Copy package files for npm
+COPY package.json package-lock.json ./
+RUN npm ci
+
 # Copy application files
 COPY . .
 
-# Install PHP dependencies
-RUN composer install --no-dev --optimize-autoloader --no-interaction
+# Build assets
+RUN npm run build
 
-# Install Node dependencies and build assets
-RUN npm ci && npm run build
+# Install PHP dependencies (with scripts this time)
+RUN composer dump-autoload --optimize
 
 # Cache Laravel configs (will be done at runtime with env vars)
 # RUN php artisan config:cache && php artisan route:cache && php artisan view:cache
@@ -37,10 +45,14 @@ RUN npm ci && npm run build
 # Set permissions
 RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 755 /var/www/html/storage \
-    && chmod -R 755 /var/www/html/bootstrap/cache
+    && chmod -R 755 /var/www/html/bootstrap/cache \
+    && chmod -R 755 /var/www/html/public
 
 # Expose port (Render sets PORT env var)
 EXPOSE $PORT
 
-# Start PHP built-in server
-CMD php artisan serve --host=0.0.0.0 --port=$PORT
+# Change to public directory for serving
+WORKDIR /var/www/html/public
+
+# Start PHP built-in server from public directory
+CMD cd /var/www/html && php artisan serve --host=0.0.0.0 --port=$PORT
