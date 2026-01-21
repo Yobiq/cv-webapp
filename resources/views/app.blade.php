@@ -14,6 +14,7 @@
     <link href="{{asset('css/style.css')}}" rel="stylesheet" />
     <meta name="asset-url" content="{{asset('')}}" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="contact-route" content="{{ route('contact.send') }}">
     
     <!-- Load Bootstrap JS early so it's available for navbar scripts -->
     <script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>

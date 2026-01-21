@@ -1488,7 +1488,8 @@
                 submitBtn.innerHTML = '<i class="bi bi-hourglass-split"></i> Verzenden...';
             }
 
-            fetch('{{ route("contact.send") }}', {
+            const contactRoute = document.querySelector('meta[name="contact-route"]')?.content || '/contact';
+            fetch(contactRoute, {
                 method: 'POST',
                 body: formData,
                 headers: {
