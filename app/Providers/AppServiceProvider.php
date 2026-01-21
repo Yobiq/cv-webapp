@@ -30,5 +30,10 @@ class AppServiceProvider extends ServiceProvider
         if (config('app.env') === 'production') {
             \URL::forceScheme('https');
         }
+        
+        // Ensure ASSET_URL is used for asset() helper
+        if ($assetUrl = env('ASSET_URL')) {
+            \Illuminate\Support\Facades\URL::forceRootUrl($assetUrl);
+        }
     }
 }
