@@ -14,7 +14,7 @@
                     </div>
                     <div class="fs-3 fw-light text-muted">{{ $heroData['title'] ?? __('messages.welcome_portfolio') }}</div>
                     <h1 class="display-3 fw-bolder mb-5">
-                        <span class="text-gradient d-inline">{{ $heroData['short_title'] ?? 'Musabe Coucou' }}</span>
+                        <span class="text-gradient d-inline">{{ $heroData['short_title'] ?? 'Eyobiel Goitom' }}</span>
                     </h1>
                     <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xxl-start mb-3 hero-buttons">
                         <a class="btn hero-btn hero-btn-primary" href="{{url('/resume')}}">
@@ -63,7 +63,7 @@
             <div class="col-xxl-7">
                 <div class="d-flex justify-content-center mt-5 mt-xxl-0">
                     <div class="profile">
-                        <img class="profile-img" src="{{ asset($heroData['image'] ?? 'assets/linkedin.png') }}" alt="Musabe Coucou" />
+                        <img class="profile-img" src="{{ asset($heroData['image'] ?? 'assets/linkedin.png') }}" alt="Eyobiel Goitom" />
                     </div>
                 </div>
             </div>

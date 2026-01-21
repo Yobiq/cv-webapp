@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Musabe Coucou</title>
+    <title>Eyobiel Goitom</title>
     <link rel="icon" type="image/svg+xml" href="{{asset('assets/favicon-eyobiel.svg')}}" />
     <link rel="icon" type="image/x-icon" href="{{asset('assets/favicon-eyobiel.ico')}}" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />

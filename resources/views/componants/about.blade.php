@@ -15,11 +15,11 @@
             <!-- Photo Card (Left) -->
             <div class="photo-card">
                 <div class="photo-card-content">
-                    <h2 class="photo-name">{{ $aboutData['name'] ?? 'Musabe Coucou' }}</h2>
-                    <p class="photo-role">{{ $aboutData['role'] ?? 'Analyst Software Developer' }}</p>
+                    <h2 class="photo-name">{{ $aboutData['name'] ?? 'Eyobiel Goitom' }}</h2>
+                    <p class="photo-role">{{ $aboutData['role'] ?? 'Founder · EG Web Solutions' }}</p>
                     <div class="accent-line"></div>
                     <div class="photo-container">
-                        <img src="{{ asset($aboutData['photo'] ?? 'assets/m12.png') }}" alt="{{ $aboutData['name'] ?? 'Musabe Coucou' }}" class="profile-photo">
+                        <img src="{{ asset($aboutData['photo'] ?? 'assets/m12.png') }}" alt="{{ $aboutData['name'] ?? 'Eyobiel Goitom' }}" class="profile-photo">
                     </div>
                 </div>
             </div>
@@ -29,7 +29,7 @@
                 <div class="spinning-icon">
                     <img src="{{ asset('assets/circle.png') }}" alt="Spinning Icon" class="spinning-icon-img">
                 </div>
-                <h1 class="bio-title">{{ $aboutData['title'] ?? 'IK BEN MUSABE COUCOU, EEN ERVAREN ANALYST SOFTWARE DEVELOPER.' }}</h1>
+                <h1 class="bio-title">{{ $aboutData['title'] ?? 'Ik help merken groeien met elegante én functionele digitale ervaringen.' }}</h1>
                 <div class="bio-content">
                     @forelse($descriptions as $paragraph)
                         <p class="bio-text">{{ $paragraph }}</p>
