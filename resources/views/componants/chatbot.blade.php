@@ -47,7 +47,238 @@
         <div id="chatbot-quick-actions" class="chatbot-quick-actions">
             <button class="chatbot-quick-btn" data-action="services">Diensten</button>
             <button class="chatbot-quick-btn" data-action="portfolio">Portfolio</button>
-            <button class="chatbot-quick-btn" data-action="contact">Contact</button>
+            <button class="chatbot-quick-btn" data-action="wizard">✨ Project Wizard</button>
+        </div>
+
+        <!-- Consulting Wizard Form -->
+        <div id="chatbot-wizard" class="chatbot-wizard" style="display: none;">
+            <div class="wizard-header">
+                <h6>Project Consultancy Wizard</h6>
+                <button id="wizard-close" class="wizard-close-btn">
+                    <i class="bi bi-x"></i>
+                </button>
+            </div>
+            
+            <div class="wizard-progress">
+                <div class="wizard-progress-bar" id="wizard-progress-bar"></div>
+            </div>
+            
+            <div class="wizard-steps">
+                <!-- Step 1: Project Type -->
+                <div class="wizard-step active" data-step="1">
+                    <h6>Wat voor project heb je in gedachten?</h6>
+                    <div class="wizard-options">
+                        <label class="wizard-option">
+                            <input type="radio" name="project_type" value="website">
+                            <div class="wizard-option-content">
+                                <i class="bi bi-globe"></i>
+                                <span>Website</span>
+                            </div>
+                        </label>
+                        <label class="wizard-option">
+                            <input type="radio" name="project_type" value="webapp">
+                            <div class="wizard-option-content">
+                                <i class="bi bi-app"></i>
+                                <span>Web App</span>
+                            </div>
+                        </label>
+                        <label class="wizard-option">
+                            <input type="radio" name="project_type" value="ecommerce">
+                            <div class="wizard-option-content">
+                                <i class="bi bi-cart"></i>
+                                <span>E-commerce</span>
+                            </div>
+                        </label>
+                        <label class="wizard-option">
+                            <input type="radio" name="project_type" value="mobile">
+                            <div class="wizard-option-content">
+                                <i class="bi bi-phone"></i>
+                                <span>Mobile App</span>
+                            </div>
+                        </label>
+                        <label class="wizard-option">
+                            <input type="radio" name="project_type" value="saas">
+                            <div class="wizard-option-content">
+                                <i class="bi bi-cloud"></i>
+                                <span>SaaS Platform</span>
+                            </div>
+                        </label>
+                        <label class="wizard-option">
+                            <input type="radio" name="project_type" value="other">
+                            <div class="wizard-option-content">
+                                <i class="bi bi-question-circle"></i>
+                                <span>Anders</span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Step 2: Budget -->
+                <div class="wizard-step" data-step="2">
+                    <h6>Wat is je geschatte budget?</h6>
+                    <div class="wizard-options">
+                        <label class="wizard-option">
+                            <input type="radio" name="budget" value="under-2k">
+                            <div class="wizard-option-content">
+                                <span>Onder €2.000</span>
+                            </div>
+                        </label>
+                        <label class="wizard-option">
+                            <input type="radio" name="budget" value="2k-5k">
+                            <div class="wizard-option-content">
+                                <span>€2.000 - €5.000</span>
+                            </div>
+                        </label>
+                        <label class="wizard-option">
+                            <input type="radio" name="budget" value="5k-10k">
+                            <div class="wizard-option-content">
+                                <span>€5.000 - €10.000</span>
+                            </div>
+                        </label>
+                        <label class="wizard-option">
+                            <input type="radio" name="budget" value="10k-25k">
+                            <div class="wizard-option-content">
+                                <span>€10.000 - €25.000</span>
+                            </div>
+                        </label>
+                        <label class="wizard-option">
+                            <input type="radio" name="budget" value="25k-plus">
+                            <div class="wizard-option-content">
+                                <span>€25.000+</span>
+                            </div>
+                        </label>
+                        <label class="wizard-option">
+                            <input type="radio" name="budget" value="discuss">
+                            <div class="wizard-option-content">
+                                <span>Liever bespreken</span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Step 3: Timeline -->
+                <div class="wizard-step" data-step="3">
+                    <h6>Wanneer wil je starten?</h6>
+                    <div class="wizard-options">
+                        <label class="wizard-option">
+                            <input type="radio" name="timeline" value="asap">
+                            <div class="wizard-option-content">
+                                <span>Zo snel mogelijk</span>
+                            </div>
+                        </label>
+                        <label class="wizard-option">
+                            <input type="radio" name="timeline" value="1-month">
+                            <div class="wizard-option-content">
+                                <span>Binnen 1 maand</span>
+                            </div>
+                        </label>
+                        <label class="wizard-option">
+                            <input type="radio" name="timeline" value="3-months">
+                            <div class="wizard-option-content">
+                                <span>Binnen 3 maanden</span>
+                            </div>
+                        </label>
+                        <label class="wizard-option">
+                            <input type="radio" name="timeline" value="6-months">
+                            <div class="wizard-option-content">
+                                <span>Binnen 6 maanden</span>
+                            </div>
+                        </label>
+                        <label class="wizard-option">
+                            <input type="radio" name="timeline" value="flexible">
+                            <div class="wizard-option-content">
+                                <span>Flexibel</span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Step 4: Features -->
+                <div class="wizard-step" data-step="4">
+                    <h6>Welke features zijn belangrijk? (meerdere opties mogelijk)</h6>
+                    <div class="wizard-checkboxes">
+                        <label class="wizard-checkbox">
+                            <input type="checkbox" name="features[]" value="responsive">
+                            <span>Responsive Design</span>
+                        </label>
+                        <label class="wizard-checkbox">
+                            <input type="checkbox" name="features[]" value="cms">
+                            <span>Content Management (CMS)</span>
+                        </label>
+                        <label class="wizard-checkbox">
+                            <input type="checkbox" name="features[]" value="payment">
+                            <span>Payment Integratie</span>
+                        </label>
+                        <label class="wizard-checkbox">
+                            <input type="checkbox" name="features[]" value="booking">
+                            <span>Booking/Reservering Systeem</span>
+                        </label>
+                        <label class="wizard-checkbox">
+                            <input type="checkbox" name="features[]" value="auth">
+                            <span>Gebruikersaccounts</span>
+                        </label>
+                        <label class="wizard-checkbox">
+                            <input type="checkbox" name="features[]" value="api">
+                            <span>API Integraties</span>
+                        </label>
+                        <label class="wizard-checkbox">
+                            <input type="checkbox" name="features[]" value="seo">
+                            <span>SEO Optimalisatie</span>
+                        </label>
+                        <label class="wizard-checkbox">
+                            <input type="checkbox" name="features[]" value="analytics">
+                            <span>Analytics & Tracking</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Step 5: Contact Info -->
+                <div class="wizard-step" data-step="5">
+                    <h6>Laat je contactgegevens achter</h6>
+                    <div class="wizard-form-fields">
+                        <div class="wizard-field">
+                            <label>Naam *</label>
+                            <input type="text" name="name" required placeholder="Je volledige naam">
+                        </div>
+                        <div class="wizard-field">
+                            <label>Email *</label>
+                            <input type="email" name="email" required placeholder="je@email.nl">
+                        </div>
+                        <div class="wizard-field">
+                            <label>Telefoon</label>
+                            <input type="tel" name="phone" placeholder="+31 6 12345678">
+                        </div>
+                        <div class="wizard-field">
+                            <label>Bedrijf</label>
+                            <input type="text" name="company" placeholder="Je bedrijfsnaam">
+                        </div>
+                        <div class="wizard-field">
+                            <label>Extra informatie</label>
+                            <textarea name="message" rows="3" placeholder="Vertel meer over je project..."></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 6: Summary -->
+                <div class="wizard-step" data-step="6">
+                    <h6>Samenvatting</h6>
+                    <div class="wizard-summary" id="wizard-summary">
+                        <!-- Summary will be generated here -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="wizard-actions">
+                <button id="wizard-prev" class="wizard-btn wizard-btn-secondary" style="display: none;">
+                    <i class="bi bi-arrow-left"></i> Vorige
+                </button>
+                <button id="wizard-next" class="wizard-btn wizard-btn-primary">
+                    Volgende <i class="bi bi-arrow-right"></i>
+                </button>
+                <button id="wizard-submit" class="wizard-btn wizard-btn-primary" style="display: none;">
+                    <i class="bi bi-send"></i> Verstuur
+                </button>
+            </div>
         </div>
 
         <!-- Input Area -->
@@ -412,6 +643,288 @@
     }
 }
 
+/* Wizard Form Styles */
+.chatbot-wizard {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--color-card-bg);
+    display: flex;
+    flex-direction: column;
+    z-index: 10;
+}
+
+.wizard-header {
+    padding: 16px 20px;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-alt));
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.wizard-header h6 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.wizard-close-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+}
+
+.wizard-close-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.wizard-progress {
+    height: 4px;
+    background: var(--color-bg-alt);
+    position: relative;
+}
+
+.wizard-progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-primary-alt));
+    transition: width 0.3s ease;
+    width: 16.66%;
+}
+
+.wizard-steps {
+    flex: 1;
+    overflow-y: auto;
+    padding: 24px 20px;
+}
+
+.wizard-step {
+    display: none;
+    animation: fadeIn 0.3s ease;
+}
+
+.wizard-step.active {
+    display: block;
+}
+
+.wizard-step h6 {
+    margin: 0 0 20px 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+.wizard-options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.wizard-option {
+    cursor: pointer;
+    margin: 0;
+}
+
+.wizard-option input[type="radio"] {
+    display: none;
+}
+
+.wizard-option-content {
+    padding: 16px;
+    border: 2px solid rgba(var(--color-primary-rgb), 0.2);
+    border-radius: 12px;
+    background: var(--color-bg);
+    color: var(--color-text);
+    text-align: center;
+    transition: all 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.wizard-option-content i {
+    font-size: 24px;
+    color: var(--color-primary);
+}
+
+.wizard-option input[type="radio"]:checked + .wizard-option-content {
+    border-color: var(--color-primary);
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-alt));
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(var(--color-primary-rgb), 0.3);
+}
+
+.wizard-option input[type="radio"]:checked + .wizard-option-content i {
+    color: white;
+}
+
+.wizard-checkboxes {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.wizard-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    border: 2px solid rgba(var(--color-primary-rgb), 0.2);
+    border-radius: 12px;
+    background: var(--color-bg);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.wizard-checkbox:hover {
+    border-color: var(--color-primary);
+    background: var(--color-bg-alt);
+}
+
+.wizard-checkbox input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: var(--color-primary);
+}
+
+.wizard-checkbox input[type="checkbox"]:checked + span {
+    color: var(--color-primary);
+    font-weight: 600;
+}
+
+.wizard-form-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.wizard-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.wizard-field label {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+.wizard-field input,
+.wizard-field textarea {
+    padding: 12px 16px;
+    border: 2px solid rgba(var(--color-primary-rgb), 0.2);
+    border-radius: 12px;
+    background: var(--color-bg);
+    color: var(--color-text);
+    font-size: 14px;
+    font-family: inherit;
+    transition: all 0.2s;
+    outline: none;
+}
+
+.wizard-field input:focus,
+.wizard-field textarea:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb), 0.1);
+}
+
+.wizard-field textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.wizard-summary {
+    background: var(--color-bg-alt);
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.wizard-summary-item {
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(var(--color-primary-rgb), 0.1);
+}
+
+.wizard-summary-item:last-child {
+    border-bottom: none;
+}
+
+.wizard-summary-label {
+    font-weight: 600;
+    color: var(--color-primary);
+    font-size: 13px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+}
+
+.wizard-summary-value {
+    color: var(--color-text);
+    font-size: 14px;
+}
+
+.wizard-actions {
+    padding: 16px 20px;
+    background: var(--color-card-bg);
+    border-top: 1px solid rgba(var(--color-primary-rgb), 0.1);
+    display: flex;
+    gap: 12px;
+    justify-content: space-between;
+}
+
+.wizard-btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s;
+}
+
+.wizard-btn-primary {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-alt));
+    color: white;
+    flex: 1;
+    justify-content: center;
+}
+
+.wizard-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(var(--color-primary-rgb), 0.4);
+}
+
+.wizard-btn-secondary {
+    background: var(--color-bg-alt);
+    color: var(--color-text);
+    border: 2px solid rgba(var(--color-primary-rgb), 0.2);
+}
+
+.wizard-btn-secondary:hover {
+    border-color: var(--color-primary);
+    background: var(--color-bg);
+}
+
+.wizard-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
 @media (max-width: 768px) {
     .chatbot-container {
         bottom: 16px;
@@ -422,6 +935,10 @@
         width: calc(100vw - 32px);
         height: calc(100vh - 100px);
         bottom: 80px;
+    }
+    
+    .wizard-options {
+        grid-template-columns: 1fr;
     }
 }
 </style>
@@ -609,6 +1126,11 @@
         },
 
         handleQuickAction: function(action) {
+            if (action === 'wizard') {
+                this.startWizard();
+                return;
+            }
+
             const responses = {
                 services: this.knowledgeBase.services.response,
                 portfolio: this.knowledgeBase.portfolio.response,
@@ -620,6 +1142,384 @@
                 this.hideTyping();
                 this.addMessage(responses[action] || this.knowledgeBase.default.response, 'bot');
             }, 800);
+        },
+
+        startWizard: function() {
+            const wizard = document.getElementById('chatbot-wizard');
+            const messages = document.getElementById('chatbot-messages');
+            const quickActions = document.getElementById('chatbot-quick-actions');
+            const inputArea = document.querySelector('.chatbot-input-area');
+
+            if (wizard && messages && quickActions && inputArea) {
+                messages.style.display = 'none';
+                quickActions.style.display = 'none';
+                inputArea.style.display = 'none';
+                wizard.style.display = 'flex';
+                wizardManager.init();
+            }
+        },
+
+        closeWizard: function() {
+            const wizard = document.getElementById('chatbot-wizard');
+            const messages = document.getElementById('chatbot-messages');
+            const quickActions = document.getElementById('chatbot-quick-actions');
+            const inputArea = document.querySelector('.chatbot-input-area');
+
+            if (wizard && messages && quickActions && inputArea) {
+                wizard.style.display = 'none';
+                messages.style.display = 'flex';
+                quickActions.style.display = 'flex';
+                inputArea.style.display = 'flex';
+                wizardManager.reset();
+            }
+        }
+    };
+
+    // Wizard Manager
+    const wizardManager = {
+        currentStep: 1,
+        totalSteps: 6,
+        formData: {},
+
+        init: function() {
+            const closeBtn = document.getElementById('wizard-close');
+            const prevBtn = document.getElementById('wizard-prev');
+            const nextBtn = document.getElementById('wizard-next');
+            const submitBtn = document.getElementById('wizard-submit');
+
+            closeBtn?.addEventListener('click', () => chatbot.closeWizard());
+            prevBtn?.addEventListener('click', () => this.prevStep());
+            nextBtn?.addEventListener('click', () => this.nextStep());
+            submitBtn?.addEventListener('click', () => this.submitForm());
+
+            this.updateProgress();
+            this.updateButtons();
+        },
+
+        reset: function() {
+            this.currentStep = 1;
+            this.formData = {};
+            const steps = document.querySelectorAll('.wizard-step');
+            steps.forEach((step, index) => {
+                step.classList.toggle('active', index === 0);
+            });
+            this.updateProgress();
+            this.updateButtons();
+        },
+
+        nextStep: function() {
+            if (!this.validateStep()) return;
+
+            if (this.currentStep < this.totalSteps) {
+                // Save step data
+                this.saveStepData();
+
+                // Move to next step
+                const currentStepEl = document.querySelector(`.wizard-step[data-step="${this.currentStep}"]`);
+                const nextStepEl = document.querySelector(`.wizard-step[data-step="${this.currentStep + 1}"]`);
+
+                currentStepEl?.classList.remove('active');
+                nextStepEl?.classList.add('active');
+
+                this.currentStep++;
+                this.updateProgress();
+                this.updateButtons();
+
+                // Generate summary on last step
+                if (this.currentStep === this.totalSteps) {
+                    this.generateSummary();
+                }
+            }
+        },
+
+        prevStep: function() {
+            if (this.currentStep > 1) {
+                const currentStepEl = document.querySelector(`.wizard-step[data-step="${this.currentStep}"]`);
+                const prevStepEl = document.querySelector(`.wizard-step[data-step="${this.currentStep - 1}"]`);
+
+                currentStepEl?.classList.remove('active');
+                prevStepEl?.classList.add('active');
+
+                this.currentStep--;
+                this.updateProgress();
+                this.updateButtons();
+            }
+        },
+
+        validateStep: function() {
+            const stepEl = document.querySelector(`.wizard-step[data-step="${this.currentStep}"]`);
+            if (!stepEl) return false;
+
+            // Step 1: Project Type
+            if (this.currentStep === 1) {
+                const selected = stepEl.querySelector('input[name="project_type"]:checked');
+                if (!selected) {
+                    alert('Selecteer een projecttype om door te gaan.');
+                    return false;
+                }
+            }
+
+            // Step 2: Budget
+            if (this.currentStep === 2) {
+                const selected = stepEl.querySelector('input[name="budget"]:checked');
+                if (!selected) {
+                    alert('Selecteer een budget om door te gaan.');
+                    return false;
+                }
+            }
+
+            // Step 3: Timeline
+            if (this.currentStep === 3) {
+                const selected = stepEl.querySelector('input[name="timeline"]:checked');
+                if (!selected) {
+                    alert('Selecteer een tijdlijn om door te gaan.');
+                    return false;
+                }
+            }
+
+            // Step 5: Contact Info
+            if (this.currentStep === 5) {
+                const name = stepEl.querySelector('input[name="name"]')?.value.trim();
+                const email = stepEl.querySelector('input[name="email"]')?.value.trim();
+                
+                if (!name || !email) {
+                    alert('Vul ten minste naam en email in om door te gaan.');
+                    return false;
+                }
+
+                // Validate email
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email)) {
+                    alert('Voer een geldig emailadres in.');
+                    return false;
+                }
+            }
+
+            return true;
+        },
+
+        saveStepData: function() {
+            const stepEl = document.querySelector(`.wizard-step[data-step="${this.currentStep}"]`);
+            if (!stepEl) return;
+
+            // Save radio buttons
+            const radios = stepEl.querySelectorAll('input[type="radio"]:checked');
+            radios.forEach(radio => {
+                this.formData[radio.name] = radio.value;
+            });
+
+            // Save checkboxes
+            const checkboxes = stepEl.querySelectorAll('input[type="checkbox"]:checked');
+            if (checkboxes.length > 0) {
+                this.formData['features'] = Array.from(checkboxes).map(cb => cb.value);
+            }
+
+            // Save text inputs
+            const inputs = stepEl.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"], textarea');
+            inputs.forEach(input => {
+                if (input.value.trim()) {
+                    this.formData[input.name] = input.value.trim();
+                }
+            });
+        },
+
+        generateSummary: function() {
+            const summaryEl = document.getElementById('wizard-summary');
+            if (!summaryEl) return;
+
+            const projectTypes = {
+                'website': 'Website',
+                'webapp': 'Web App',
+                'ecommerce': 'E-commerce',
+                'mobile': 'Mobile App',
+                'saas': 'SaaS Platform',
+                'other': 'Anders'
+            };
+
+            const budgets = {
+                'under-2k': 'Onder €2.000',
+                '2k-5k': '€2.000 - €5.000',
+                '5k-10k': '€5.000 - €10.000',
+                '10k-25k': '€10.000 - €25.000',
+                '25k-plus': '€25.000+',
+                'discuss': 'Liever bespreken'
+            };
+
+            const timelines = {
+                'asap': 'Zo snel mogelijk',
+                '1-month': 'Binnen 1 maand',
+                '3-months': 'Binnen 3 maanden',
+                '6-months': 'Binnen 6 maanden',
+                'flexible': 'Flexibel'
+            };
+
+            const features = {
+                'responsive': 'Responsive Design',
+                'cms': 'Content Management (CMS)',
+                'payment': 'Payment Integratie',
+                'booking': 'Booking/Reservering Systeem',
+                'auth': 'Gebruikersaccounts',
+                'api': 'API Integraties',
+                'seo': 'SEO Optimalisatie',
+                'analytics': 'Analytics & Tracking'
+            };
+
+            let html = '';
+            
+            if (this.formData.project_type) {
+                html += `<div class="wizard-summary-item">
+                    <div class="wizard-summary-label">Project Type</div>
+                    <div class="wizard-summary-value">${projectTypes[this.formData.project_type] || this.formData.project_type}</div>
+                </div>`;
+            }
+
+            if (this.formData.budget) {
+                html += `<div class="wizard-summary-item">
+                    <div class="wizard-summary-label">Budget</div>
+                    <div class="wizard-summary-value">${budgets[this.formData.budget] || this.formData.budget}</div>
+                </div>`;
+            }
+
+            if (this.formData.timeline) {
+                html += `<div class="wizard-summary-item">
+                    <div class="wizard-summary-label">Timeline</div>
+                    <div class="wizard-summary-value">${timelines[this.formData.timeline] || this.formData.timeline}</div>
+                </div>`;
+            }
+
+            if (this.formData.features && this.formData.features.length > 0) {
+                html += `<div class="wizard-summary-item">
+                    <div class="wizard-summary-label">Features</div>
+                    <div class="wizard-summary-value">${this.formData.features.map(f => features[f] || f).join(', ')}</div>
+                </div>`;
+            }
+
+            if (this.formData.name) {
+                html += `<div class="wizard-summary-item">
+                    <div class="wizard-summary-label">Naam</div>
+                    <div class="wizard-summary-value">${this.formData.name}</div>
+                </div>`;
+            }
+
+            if (this.formData.email) {
+                html += `<div class="wizard-summary-item">
+                    <div class="wizard-summary-label">Email</div>
+                    <div class="wizard-summary-value">${this.formData.email}</div>
+                </div>`;
+            }
+
+            if (this.formData.phone) {
+                html += `<div class="wizard-summary-item">
+                    <div class="wizard-summary-label">Telefoon</div>
+                    <div class="wizard-summary-value">${this.formData.phone}</div>
+                </div>`;
+            }
+
+            if (this.formData.company) {
+                html += `<div class="wizard-summary-item">
+                    <div class="wizard-summary-label">Bedrijf</div>
+                    <div class="wizard-summary-value">${this.formData.company}</div>
+                </div>`;
+            }
+
+            summaryEl.innerHTML = html || '<p>Geen gegevens beschikbaar.</p>';
+        },
+
+        updateProgress: function() {
+            const progressBar = document.getElementById('wizard-progress-bar');
+            if (progressBar) {
+                const percentage = (this.currentStep / this.totalSteps) * 100;
+                progressBar.style.width = percentage + '%';
+            }
+        },
+
+        updateButtons: function() {
+            const prevBtn = document.getElementById('wizard-prev');
+            const nextBtn = document.getElementById('wizard-next');
+            const submitBtn = document.getElementById('wizard-submit');
+
+            if (prevBtn) {
+                prevBtn.style.display = this.currentStep > 1 ? 'flex' : 'none';
+            }
+
+            if (nextBtn && submitBtn) {
+                if (this.currentStep === this.totalSteps) {
+                    nextBtn.style.display = 'none';
+                    submitBtn.style.display = 'flex';
+                } else {
+                    nextBtn.style.display = 'flex';
+                    submitBtn.style.display = 'none';
+                }
+            }
+        },
+
+        submitForm: function() {
+            // Save final step data
+            this.saveStepData();
+
+            // Build message from form data
+            let message = 'Nieuwe project consultatie aanvraag:\n\n';
+            message += `Project Type: ${this.formData.project_type || 'Niet opgegeven'}\n`;
+            message += `Budget: ${this.formData.budget || 'Niet opgegeven'}\n`;
+            message += `Timeline: ${this.formData.timeline || 'Niet opgegeven'}\n`;
+            
+            if (this.formData.features && this.formData.features.length > 0) {
+                message += `Features: ${this.formData.features.join(', ')}\n`;
+            }
+            
+            message += `\nContactgegevens:\n`;
+            message += `Naam: ${this.formData.name || 'Niet opgegeven'}\n`;
+            message += `Email: ${this.formData.email || 'Niet opgegeven'}\n`;
+            if (this.formData.phone) message += `Telefoon: ${this.formData.phone}\n`;
+            if (this.formData.company) message += `Bedrijf: ${this.formData.company}\n`;
+            if (this.formData.message) message += `\nExtra info: ${this.formData.message}\n`;
+
+            // Submit via contact form
+            const formData = new FormData();
+            formData.append('name', this.formData.name || '');
+            formData.append('email', this.formData.email || '');
+            formData.append('subject', 'Project Consultatie via Chatbot Wizard');
+            formData.append('message', message);
+
+            // Show loading
+            const submitBtn = document.getElementById('wizard-submit');
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<i class="bi bi-hourglass-split"></i> Verzenden...';
+            }
+
+            fetch('{{ route("contact.send") }}', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.content || '',
+                    'X-Requested-With': 'XMLHttpRequest',
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok || response.redirected) {
+                    if (submitBtn) {
+                        submitBtn.innerHTML = '<i class="bi bi-check-circle"></i> Verzonden!';
+                        submitBtn.style.background = '#10b981';
+                    }
+
+                    setTimeout(() => {
+                        chatbot.closeWizard();
+                        chatbot.addMessage('Bedankt! Je project consultatie is verzonden. Ik neem zo snel mogelijk contact met je op! 🎉', 'bot');
+                    }, 1500);
+                } else {
+                    throw new Error('Submission failed');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = '<i class="bi bi-send"></i> Verstuur';
+                }
+                alert('Er is een fout opgetreden. Probeer het later opnieuw of gebruik het contactformulier.');
+            });
         }
     };
 

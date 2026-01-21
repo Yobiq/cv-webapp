@@ -13,6 +13,7 @@
     <link href="{{asset('css/bootstrap.css')}}" rel="stylesheet" />
     <link href="{{asset('css/style.css')}}" rel="stylesheet" />
     <meta name="asset-url" content="{{asset('')}}" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     
     <!-- Load Bootstrap JS early so it's available for navbar scripts -->
     <script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
