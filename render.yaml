@@ -1,7 +1,7 @@
 services:
   - type: web
     name: cv-webapp
-    env: php
+    env: docker
     buildCommand: |
       composer install --no-dev --optimize-autoloader --no-interaction &&
       npm ci &&
@@ -14,8 +14,20 @@ services:
       - key: APP_ENV
         value: production
       - key: APP_DEBUG
-        value: false
+        value: "false"
       - key: DB_CONNECTION
         value: array
       - key: APP_KEY
-        generateValue: true
+        value: base64:+jHgQd3rOZTsl02M8bdxbnHtBG4/nLxn4e0DOmUkxKA=
+      - key: APP_URL
+        value: https://cv-webapp-40tl.onrender.com
+      - key: ASSET_URL
+        value: https://cv-webapp-40tl.onrender.com
+      - key: CV_PASSWORD
+        value: 49AZrS3b
+      - key: RESEND_API_KEY
+        value: re_Cfm2QU1N_LYPkVgz6MuCLq5W9xwqwRBby
+      - key: RESEND_FROM_EMAIL
+        value: Eyobielgoitom10@gmail.com
+      - key: RESEND_TO_EMAIL
+        value: Eyobelgoitom@gmail.com
