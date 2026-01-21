@@ -31,13 +31,16 @@ RUN composer install --no-dev --optimize-autoloader --no-interaction
 # Install Node dependencies and build assets
 RUN npm ci && npm run build
 
+# Cache Laravel configs (will be done at runtime with env vars)
+# RUN php artisan config:cache && php artisan route:cache && php artisan view:cache
+
 # Set permissions
 RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 755 /var/www/html/storage \
     && chmod -R 755 /var/www/html/bootstrap/cache
 
-# Expose port
-EXPOSE 8000
+# Expose port (Render sets PORT env var)
+EXPOSE $PORT
 
 # Start PHP built-in server
-CMD php artisan serve --host=0.0.0.0 --port=${PORT:-8000}
+CMD php artisan serve --host=0.0.0.0 --port=$PORT
